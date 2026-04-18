@@ -26,7 +26,7 @@ POST /cards creates a new flashcard.
 DELETE /cards/{index} deletes a flashcard by index.
 
 ## How to Run
-Start the application with mvn spring-boot:run. The API is available at: 
+Start the application with ./gradlew bootRun. The API is available at: 
 
 ## Purpose of the Project
 The project is part of a Web Technologies course. The goal is to gradually develop a web application throughout the course and ultimately create a complete website by the end.
