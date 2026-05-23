@@ -1,6 +1,7 @@
 FROM gradle:9-jdk25 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
+RUN ls /home/gradle/src/build/libs/
 RUN gradle build --no-daemon
 
 FROM eclipse-temurin:25-jdk-jammy
