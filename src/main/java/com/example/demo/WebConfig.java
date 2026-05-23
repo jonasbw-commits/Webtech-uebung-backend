@@ -14,7 +14,7 @@ public class WebConfig implements WebMvcConfigurer {
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
                     .allowedMethods("*")
-                    .allowedOrigins("http://localhost:5173", "https://DEIN-FRONTEND.onrender.com");
+                    .allowedOrigins("http://localhost:5173", "https://webtech-uebung-frontend.onrender.com");
         }
     }
 
