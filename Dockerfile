@@ -4,6 +4,5 @@ WORKDIR /home/gradle/src
 RUN gradle build --no-daemon
 
 FROM eclipse-temurin:25-jdk-jammy
-RUN ls /home/gradle/src/build/libs/
 COPY --from=build /home/gradle/src/build/libs/webtech-uebung-backend-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
