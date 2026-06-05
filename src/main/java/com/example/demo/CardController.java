@@ -3,21 +3,30 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cards")
 public class CardController {
+
+    private final CardRepository cardRepository;
+
+    public CardController(CardRepository cardRepository) {
+        this.cardRepository = cardRepository;
+    }
     
     @GetMapping
     public List<CardEntity> getAllCards(){
-        List<CardEntity> cards = new ArrayList<>();
-        cards.add(new CardEntity("el algoritmo", "der Algorithmus", false));
-        cards.add(new CardEntity("el bucle", "die Schleife", false));
-        cards.add(new CardEntity("la base de data", "die Datenbank", false));
-        return cards;
+        return cardRepository.findAll();
+    }
+
+    @PostMapping
+    public CardEntity createCard(@RequestBody CardEntity card) {
+        return cardRepository.save(card);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCard(@PathVariable Long id) {
+        cardRepository.deleteById(id);
     }
 }

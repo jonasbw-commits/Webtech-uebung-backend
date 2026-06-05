@@ -1,16 +1,28 @@
 package com.example.demo;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="cards")
 public class CardEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String question;
     private String answer;
     private boolean learned;
+
+    public CardEntity() {}
 
     public CardEntity(String question, String answer, boolean learned) {
         this.question = question;
         this.answer = answer;
         this.learned = false;
     }
+
+    public Long getId() { return id; }
 
     public String getQuestion() {
         return question;
