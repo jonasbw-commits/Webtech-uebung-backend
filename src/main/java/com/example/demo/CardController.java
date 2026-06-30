@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +27,14 @@ public class CardController {
     @DeleteMapping("/{id}")
     public void deleteCard(@PathVariable Long id) {
         cardRepository.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public CardEntity updateCard(@PathVariable Long id, @RequestBody CardEntity updated) {
+        CardEntity card = cardRepository.findById(id).orElseThrow();
+        card.setQuestion(updated.getQuestion());
+        card.setAnswer(updated.getAnswer());
+        card.setLearned(updated.isLearned());
+        return cardRepository.save(card);
     }
 }

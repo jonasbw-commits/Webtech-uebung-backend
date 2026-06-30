@@ -19,7 +19,7 @@ public class CardEntity {
     public CardEntity(String question, String answer, boolean learned) {
         this.question = question;
         this.answer = answer;
-        this.learned = false;
+        this.learned = learned;
     }
 
     public Long getId() { return id; }
