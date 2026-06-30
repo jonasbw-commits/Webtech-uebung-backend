@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +21,7 @@ public class CardController {
     }
 
     @PostMapping
-    public CardEntity createCard(@RequestBody CardEntity card) {
+    public CardEntity createCard(@RequestBody @Valid CardEntity card) {
         return cardRepository.save(card);
     }
 
@@ -30,7 +31,7 @@ public class CardController {
     }
 
     @PutMapping("/{id}")
-    public CardEntity updateCard(@PathVariable Long id, @RequestBody CardEntity updated) {
+    public CardEntity updateCard(@PathVariable Long id, @RequestBody @Valid CardEntity updated) {
         CardEntity card = cardRepository.findById(id).orElseThrow();
         card.setQuestion(updated.getQuestion());
         card.setAnswer(updated.getAnswer());

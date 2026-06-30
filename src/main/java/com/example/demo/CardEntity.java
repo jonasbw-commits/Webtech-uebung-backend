@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="cards")
@@ -10,7 +11,10 @@ public class CardEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Frage darf nicht leer sein")
     private String question;
+
+    @NotBlank(message = "Antwort darf nicht leer sein")
     private String answer;
     private boolean learned;
 
