@@ -18,6 +18,8 @@ public class CardEntity {
     private String answer;
     private boolean learned;
 
+    private Long deckId;
+
     public CardEntity() {}
 
     public CardEntity(String question, String answer, boolean learned) {
@@ -50,6 +52,14 @@ public class CardEntity {
 
     public void setLearned(boolean learned) {
         this.learned = learned;
+    }
+
+    public Long getDeckId() {
+        return deckId;
+    }
+
+    public void setDeckId(Long deckId) {
+        this.deckId = deckId;
     }
 }
 
