@@ -80,4 +80,5 @@ class CardControllerTest {
                 .andExpect(jsonPath("$.answer").value("Neue Antwort"))
                 .andExpect(jsonPath("$.learned").value(true));
     }
+
 }
